@@ -1,0 +1,82 @@
+<%- include("partials/header1"); -%>
+<style>
+  body{
+    background-color: #fafafa;
+  }
+</style>
+<div class="wrapper">
+<h2><span style="color:red;margin-right: .5rem;" >Demands </span>   <span style="color:green" >  And Availabities Right Now!</span></h2>
+  <% posts.forEach( post => { %>
+    <div class="mainpost">
+      <div class="username"><%= post.user %></div>
+      <p class="title"><%= post.title%>:</p>
+      <p class="quotes "><%= post.content%></p>
+
+      <div class="likedislike">
+        <p class="like">
+          <span  class="like1" data-id="<%= post.id %>" ><%= post.likes%> </span> <span class="badge prim">Upvotes</span>
+        </p>
+        <p class="likedisbttn">
+          <span class="thumbsup" data-id="<%= post.id %>" data-like="<%= post.likes%>">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M23,10C23,8.89 22.1,8 21,8H14.68L15.64,3.43C15.66,3.33 15.67,3.22 15.67,3.11C15.67,2.7 15.5,2.32 15.23,2.05L14.17,1L7.59,7.58C7.22,7.95 7,8.45 7,9V19A2,2 0 0,0 9,21H18C18.83,21 19.54,20.5 19.84,19.78L22.86,12.73C22.95,12.5 23,12.26 23,12V10M1,21H5V9H1V21Z" />
+            </svg>
+          </span>
+        </p>
+        <p class="reply replypost" data-id="<%= post.id %>">reply</p>
+        <p  class="comments clickpost" data-id="<%= post.id %>">see replies</p>
+      </div>
+
+    </div>
+  <%}) %>
+</div>
+
+<script>
+  const comments = document.querySelectorAll('.clickpost')
+  comments.forEach((post) =>{
+    const pid = post.dataset.id
+    post.addEventListener('click' , () =>{
+      fetch(window.location.href + pid)
+          .then(res =>{
+            window.location.href = res.url
+          })
+          .catch(err => console.log(err))
+    })
+  })
+
+  const reply = document.querySelectorAll('.replypost')
+  reply.forEach((replybtn) =>{
+  const pid = replybtn.dataset.id
+  replybtn.addEventListener('click' , () =>{
+    fetch(window.location.href + pid)
+        .then(res =>{
+          window.location.href = res.url
+        })
+        .catch(err => console.log(err))
+  })
+})
+
+const likebtn = document.querySelectorAll('.thumbsup')
+const likeCont = document.querySelectorAll('.like1')
+
+likebtn.forEach(likes =>{
+  likes.addEventListener('click' ,()=>{
+    totalLikes = parseInt(likes.dataset.like)
+    totalLikes = totalLikes + 1
+    const urlseg = 'ilike/' + likes.dataset.id
+    fetch(window.location.href + urlseg , {
+      method: 'POST',
+      headers:{
+        'Content-type': 'application/json'
+      }
+    }).then(res => { return res.json() })
+    .then((data)=>{
+      likeCont.forEach( (likeCont) =>{
+        if(likeCont.dataset.id === likes.dataset.id){
+          likeCont.innerText = data.like
+        }
+      } )
+    })
+  })
+})
+</script>

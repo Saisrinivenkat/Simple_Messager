@@ -1,0 +1,142 @@
+.wrapper {
+  padding: 2rem 3rem;
+  position: relative;
+}
+.wrapper h2 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+  font-family: monospace, "Brush Script MT";
+}
+
+.mainpost {
+  position: relative;
+  display: flex;
+  padding: 1rem 1rem;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #d2d2dc;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 5px 0px rgb(249, 249, 250);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1);
+  box-shadow: 10px 10px 8px #add8e6;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.con {
+  position: relative;
+  display: flex;
+  padding: 1rem 1rem;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #d2d2dc;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 5px 0px rgb(249, 249, 250);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1);
+  box-shadow: #add8e6 0px 14px 28px, #add8e6 0px 10px 10px;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.username {
+  font-size: 1.8rem;
+  font-family: monospace, cursive;
+  cursor: pointer;
+  font-weight: bolder;
+  display: flex;
+  align-items: center;
+  color: #297ece;
+}
+.quotes,
+.likedislike {
+  font-size: 1.5rem;
+}
+.title {
+  font-size: 1.5rem;
+}
+.prim {
+  background-color: #5ba309;
+}
+.like {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100px;
+  cursor: pointer;
+}
+
+.likedisbttn {
+  width: 50px;
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+}
+.thumbsup {
+  font-size: 1.5em;
+  transition: transform 0.3s ease-in;
+  color: lightblue;
+}
+
+.reply,
+.comments {
+  font-size: 1.5rem;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.1s ease-in;
+}
+
+.thumbsup:hover,
+.thumbsup:focus {
+  transform: scale(1.1);
+  color: #297ece;
+}
+.reply:hover {
+  color: #1abc9c;
+}
+
+.badge {
+  font-family: monospace;
+  color: #fff;
+  margin-left: 0.7rem;
+  font-size: 1.5rem;
+  border-radius: 0.2rem;
+}
+.badge-h {
+  font-size: 2rem;
+  padding: 0.5rem 0.5rem;
+  margin-left: 5px;
+  border-radius: 0.2rem;
+  color: #fff;
+  font-family: monospace;
+}
+
+.right {
+  float: right;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+}
+
+.comment-text {
+  font-size: 1.6rem;
+  margin-left: 2rem;
+}
+
+.tet {
+  font-family: monospace, cursive;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+.mainpost {
+  font-family: monospace, cursive;
+}
+.quotes {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.5rem;
+}
