@@ -1,17 +1,17 @@
-<%- include("partials/header1"); -%>
-<div class="wrapper">
-  <h2><span style="color:red" >Demands </span>     <span style="color:green" >  And Availabities Right Now!</span></h2>
+<link rel="stylesheet" href="../css/post.css">
+<div class="posts">
+  <h2 class="posts-title title"><span style="color:red" >Demands </span>     <span style="color:green" >  And Availabities Right Now!</span></h2>
   <div class="mainpost">
-    <div class="username"><%=post.user %></div>
-    <p class="time text-warning" ><%= new Date(post.created).toDateString(); %></p>
-    <p class="title" onload='col()' ><%= post.title%>:</p>
+    <div class="subtitle username"><%=post.user %></div>
+    <p class="time" ><%= new Date(post.created).toDateString(); %></p>
+    <p class="post-title"  ><%= post.title%>:</p>
     <p class="quotes "><%= post.content%></p>
 
     <div class="likedislike">
       <p class="like">
         <span  class="like1" data-id="<%= post.id %>" ><%= post.likes%> </span> <span class="badge prim">Upvotes</span>
       </p>
-      <p class="likedisbttn">
+      <p class="likebtn">
         <span class="thumbsup" data-id="<%= post.id %>" data-like="<%= post.likes%>">
           <svg style="width:24px;height:24px" viewBox="0 0 24 24">
           <path fill="currentColor" d="M23,10C23,8.89 22.1,8 21,8H14.68L15.64,3.43C15.66,3.33 15.67,3.22 15.67,3.11C15.67,2.7 15.5,2.32 15.23,2.05L14.17,1L7.59,7.58C7.22,7.95 7,8.45 7,9V19A2,2 0 0,0 9,21H18C18.83,21 19.54,20.5 19.84,19.78L22.86,12.73C22.95,12.5 23,12.26 23,12V10M1,21H5V9H1V21Z" />
@@ -22,29 +22,28 @@
     </div>
 
     <div>
-      <form class="mb-5" method="post" action="/reply/<%= post._id %>" name="contactForm">
+      <form class="comment-form" method="post" action="/reply/<%= post._id %>" name="contactForm">
 
-        <div class="col-md-12 form-group">
-          <textarea class="form-control tet" name="message"  cols="30" rows="2" placeholder="Write your reply"></textarea>
+        <div class="form-group">
+          <textarea  name="message"  cols="30" rows="2" placeholder="Write your reply"></textarea>
         </div>
-          <div class="row">
-            <div class="col-12">
-              <input type="submit" value="Send Message" class="btn btn-secondary right ">
-              <span class="submitting"></span>
-             </div>
+          <div class="btn-cont">
+            <input type="submit" value="Send Message" class="btn ">
           </div>
         </div>
       </form>
-      <h3 style="font-family: Verdana, Geneva, Tahoma, sans-serif;margin-bottom: 2rem;">Comments:</h3>
+      <div class="comments">
+      <h3 class="post-title">Comments:</h3>
       <% comments.forEach((comment)=> {%>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title username" style=""> <span style="font-size: 3rem;margin-right: 5px;">&middot;</span><%= comment.name %></h3>
+            <h3 class="panel-title " > <span style="font-size: 1em;margin-right: 10px;">&middot;</span><%= comment.name %></h3>
           </div>
-          <div class="panel-body comment-text"><%= comment.reply %>
+          <div class="panel-body quotes"><%= comment.reply %>
           </div>
         </div>
       <% }) %>
+    </div>
     </div>
   </div>
 

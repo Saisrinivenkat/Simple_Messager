@@ -1,5 +1,5 @@
 const express = require('express');
-const { requiresAuth } = require('express-openid-connect');
+// const { requiresAuth } = require('express-openid-connect');
 const router = express.Router()
 const Post = require('../models/model')
 const Reply = require('../models/replies')
@@ -13,6 +13,8 @@ router.get('/' , checkAuth , (req,res) => {
     }
     
     res.render('posts',{
+      layout:'./layouts/posts',
+      posters:true,
       posts: post,
       url : req.url
     })
@@ -21,11 +23,11 @@ router.get('/' , checkAuth , (req,res) => {
 
 
 
-  
+
 
 router.post('/ilike/:postId'  , (req,res) => {
   const requestedPostId = req.params.postId;
-
+  
   Post.findOne({_id : requestedPostId},async (err,post) =>{
     if(err){
       throw err
@@ -33,7 +35,7 @@ router.post('/ilike/:postId'  , (req,res) => {
     
     const presentlikes = { likes : post.likes }
     const updatedlikes = { $set : { likes: post.likes+1 }}
-
+    
     await Post.updateOne(presentlikes,updatedlikes,function(err, res) {
       if (err) throw err;
     })
@@ -54,6 +56,8 @@ router.get("/:postId", checkAuth ,async function(req, res){
   });
   Reply.find({post_id: requestedPostId}, function(err, replies){
     res.render("post", {
+      layout:'./layouts/post',
+      posters:true,
       post:postObj,
       comments: replies
     });
@@ -61,5 +65,7 @@ router.get("/:postId", checkAuth ,async function(req, res){
   
 });
 
-
 module.exports = router
+
+
+

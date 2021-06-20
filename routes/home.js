@@ -1,24 +1,23 @@
 const express = require('express');
 const router = express.Router()
-const data = require('./content')
 const Reply = require('../models/replies')
 const Post = require('../models/model')
 const { checkAuth } = require('../config/auth_middleware')
 
 
-router.get("/home", checkAuth,function(req, res){
-  Post.find({}, function(err, posts){
-    res.render("home", {
-      startingContent: data.home,
-      posts: posts
-    });
-  });
+router.get("/home", checkAuth,async function(req, res){
+  try {
+    const posts =  await Post.find({});
+    res.render("home");
+
+  } catch (error) {
+    throw err;
+  }
 });
 
 
-
 router.get("/contact", checkAuth ,function(req, res){
-  res.render("contact", {contactContent: data.contact});
+  res.render("contact");
 });
 
 
@@ -30,8 +29,7 @@ router.get("/compose" ,checkAuth, function(req, res){
 
 
 
-
-router.post("/compose", checkAuth ,function(req, res){
+router.post("/compose", checkAuth ,async function(req, res){
   const date = new Date()
   const post = new Post({
     user: req.user.name,
@@ -41,9 +39,13 @@ router.post("/compose", checkAuth ,function(req, res){
     likes: 0
   });
 
+  try {
+    const saved = await post.save()
+    res.redirect("/home")
 
-  post.save().then(msg =>{ res.redirect("/posts")})
-  .catch(err => {res.status(400).send("unable to save to database");});
+  } catch (error) {
+    res.status(400).send("unable to save to database");
+  }
 });
 
 router.post('/reply/:postId',(req,res) =>{

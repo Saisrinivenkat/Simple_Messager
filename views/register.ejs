@@ -1,40 +1,44 @@
-<!DOCTYPE html>
-<html lang="" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
 <link rel="stylesheet" type="text/css" href="css/register.css" />
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
-<link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
 
-  </head>
-  <body>
-  <br><br><br><br>
-  <center>  <img style="max-width:200px"
-         src="/images/logo.png">
-       </center>
-  <div class="testbox">
-    <h1>Registration</h1>
-    <form action="/" method="POST">
-        <hr>
-      <div class="accounttype">
-        <input type="radio" value="None" id="radioOne" name="account" checked/>
-        <label for="radioOne" class="radio" chec>supplier</label>
-        <input type="radio" value="None" id="radioTwo" name="account" />
-        <label for="radioTwo" class="radio">In need</label>
-      </div>
-    <hr>
-    <label id="icon" for="name"><i class="icon-envelope "></i></label>
-    <input type="text" name="email" id="email" placeholder="Email" required/>
-    <label id="icon" for="name"><i class="icon-user"></i></label>
-    <input type="text" name="name" id="name" placeholder="Name" required/>
-    <label id="icon" for="name"><i class="icon-shield"></i></label>
-    <input type="password" name="password" id="password" placeholder="Password" required/>
-    <br>
-     <input type ="submit" class="button" placeholder="REGISTER"/>
-    <a href="/login"class="login" > Already have an account!    Click here </a>
-    </form>
-  </div>
+  <section class="register">
+    <h1 class="title">Saving Lives</h1>
+    <div class="register-form">
+      <h1 class="subtitle">Registration</h1>
+      <span class="line"></span>
+      <form action="/" method="POST" class="form-group">
+        <div class="acc-type">
+          <div class="joiner">
+            <input type="radio" value="None" id="radioOne" name="account" checked/>
+            <label for="radioOne" class="radio" >supplier</label>
+          </div>
+          <div class="joiner">
+            <input type="radio" value="None" id="radioTwo" name="account" />
+            <label for="radioTwo" class="radio">In need</label>
+          </div>
+        </div>
+        <span class="line"></span>
 
-  </body>
-</html>
+        <div class="form-input">
+          <div class="inp-cont">
+            <label  for="email" id="icon"><i class="icon-envelope"></i></label>
+            <input  type="text" name="email" id="email" placeholder="Email" required/>
+          </div>
+          <div class="inp-cont">
+            <label  for="name" id="icon"><i class="icon-user "></i></label>
+            <input  type="text" name="name" id="name" placeholder="Name" required/>
+          </div>
+          <div class="inp-cont">
+            <label  id="icon" for="name"><i class="icon-shield"></i></label>
+            <input  type="password" name="password" id="password" placeholder="Password" required/>
+          </div>
+          <!-- <input  type ="submit" class="button" placeholder="REGISTER"/> -->
+        </div>
+        <div class="joiner">
+          <a href="/login"class="log-text" > Already have an account!<br/>Click here </a>
+          <button type="submit" class="btn">Register</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+

@@ -1,0 +1,29 @@
+<link rel="stylesheet" type="text/css" href="css/register.css" />
+<section class="register ">
+  <h1 class="title">Saving Lives</h1>
+  <div class="register-form login">
+    <h1 class="subtitle">Login</h1>
+    <span class="line"></span>
+    <form class="form-group" action="/login" method="POST">
+    <div class="form-input">
+      <div class="inp-cont">
+        <label id="icon" for="email"><i class="icon-envelope "></i></label>
+        <input type="text" name="email" id="name" placeholder="Email" required/>
+      </div>
+      <div class="inp-cont">
+        <label id="icon" for="password"><i class="icon-shield"></i></label>
+        <input type="password" name="password" id="name" placeholder="Password" required/>
+      </div>
+    </div>
+    <% if(messages.error){ %>
+      <center><h5><%= messages.error %></h5></center>
+    <% } %>
+
+    <div class="joiner">
+      <a href="/" class="log-text" > New User!    Click here </a>
+      <button type="submit" class="btn">Login</button>
+    </div>
+
+    </form>
+  </div>
+</section>

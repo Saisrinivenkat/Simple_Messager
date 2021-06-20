@@ -1,0 +1,28 @@
+<header>
+  <div class="header w80">
+    <div class="nav-head">
+      <img src="./images/logo.png" alt="logo"/>
+    </div>
+    <nav class="nav">
+      <ul class="nav-holder">
+        <li id="home"><a href="/home">Home</a></li>
+        <li id="compose"><a href="/compose">Compose</a></li>
+        <li id="posts"><a href="/posts">Posts</a></li>
+        <li id="contact"><a href="/contact">Contact</a></li>
+        <button class="btn" id="logout" onclick="{ window.location.href='/logout' }">Logout</button>
+      </ul>
+    </nav>
+      <a href="#" class="toggle-btn">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </a>
+  </div>
+</header>
+<script>
+  const toggle = document.querySelector('.toggle-btn')
+  toggle.addEventListener('click',()=>{
+    const nav = document.querySelector('.nav')
+    nav.classList.toggle('active')
+  })
+</script>

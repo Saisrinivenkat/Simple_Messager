@@ -2,12 +2,13 @@ const express = require('express');
 const router = express.Router()
 const User = require('../models/user')
 const bcrypt = require('bcrypt')
+const passport = require('passport')
 const { checknotAuth } = require('../config/auth_middleware')
 
-//router.use(checknotAuth)
+
 
 router.get("/",checknotAuth, function(req, res){
-  res.render("register");
+  res.render("register",{ layout : './layouts/start' });
 });
 
 router.post("/",checknotAuth ,async function(req, res){
@@ -18,15 +19,24 @@ router.post("/",checknotAuth ,async function(req, res){
       name: req.body.name,
       password : password
     });
-  
-  
-    post.save().then(msg =>{ res.redirect("/login")})
-    .catch(err => {res.status(400).send("unable to save to database");});
+    const saved = post.save()
+    res.redirect("/login")
   } catch (error) {
-    console.log('Error')
-    res.status(400).send("Error On server")
+    res.status(400).send("unable to save to database");
   }
-  
 });
+
+
+router.post("/login",checknotAuth,passport.authenticate('local',{
+  successRedirect: '/home',
+  failureRedirect: '/login',
+  failureFlash : true 
+}));
+
+
+router.get("/login",checknotAuth,(req,res) =>{
+  res.render('login', { layout : './layouts/start' } )
+})
+
 
 module.exports = router

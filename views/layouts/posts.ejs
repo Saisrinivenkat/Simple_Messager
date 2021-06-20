@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome to Oxyfinder | Post your Demand here</title>
+    <meta charset="utf-8">
+    <link rel="apple-touch-icon" sizes="180x180" href="./images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">  
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+      .tog{
+        margin-top: 8rem;
+      }
+    </style>
+  </head>
+
+  <body class="posts">
+    <div class="wrapper">
+      <header>
+        <div class="header w80">
+          <div class="nav-head">
+            <img src="./images/logo.png" alt="logo" />
+
+          </div>
+          <nav class="nav">
+            <ul class="nav-holder">
+              <li id="home"><a href="/home">Home</a></li>
+              <li id="compose"><a href="/compose">Compose</a></li>
+              <li id="posts"><a href="/posts">Posts</a></li>
+              <li id="contact"><a href="/contact">Contact</a></li>
+              <button class="btn" id="logout" onclick="{ window.location.href='/logout' }">Logout</button>
+            </ul>
+          </nav>
+            <a href="#" class="toggle-btn">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </a>
+        </div>
+      </header>
+      
+
+
+
+
+      <main class="content">
+          <div class="container w80"><%- body %></div>
+      </main>
+
+
+      
+
+    </div>
+  </body>
+  <script>
+    const toggle = document.querySelector('.toggle-btn')
+    toggle.addEventListener('click',()=>{
+      const nav = document.querySelector('.nav')
+      const content = document.querySelector('.content')
+      content.classList.toggle('tog')
+      nav.classList.toggle('active')
+    })
+  </script>
+</html>
+
+

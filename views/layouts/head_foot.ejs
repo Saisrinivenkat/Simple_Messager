@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome to Oxyfinder | Post your Demand here</title>
+    <meta charset="utf-8">
+    <link rel="apple-touch-icon" sizes="180x180" href="./images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon-16x16.png">  
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <%- include('../components/header.ejs'); %>
+      <div class="back-img"></div>
+
+
+
+
+      <main class="content">
+          <div class="container w80"><%- body %></div>
+      </main>
+
+
+      
+
+    </div>
+  </body>
+  <script >
+    const togglebtn = document.querySelector('.toggle-btn')
+    const navlinks = document.querySelector('.nav-holder')
+    const logoutbtn = document.querySelector('#logout')
+
+    togglebtn.addEventListener('click',()=>{
+      navlinks.classList.toggle('active')
+      logoutbtn.classList.toggle('active')
+    })   
+  </script>
+</html>
+
+
